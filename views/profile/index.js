@@ -4,6 +4,8 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
+  StyleSheet
 } from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
 import Layout from '../layout';
@@ -11,6 +13,9 @@ import {useNavigation} from '@react-navigation/native';
 import {Avatar, TextInput} from 'react-native-paper';
 import {AuthContext} from '../../providers/AuthProvider';
 import {firebase} from '@react-native-firebase/auth';
+import {formStyles, LayoutStyles} from '../../components/category/styles';
+const width = Dimensions.get('window').width;
+
 
 const Profile = () => {
   const navigation = useNavigation();
@@ -48,7 +53,7 @@ const Profile = () => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <Text
-                style={{fontSize: 24, fontWeight: 'bold', marginVertical: 10}}>
+               style={styles.titulo}>
                 Perfil
               </Text>
 
@@ -78,26 +83,25 @@ const Profile = () => {
               <View style={{marginVertical: 10}}>
                 <Text>Correo</Text>
                 <TextInput
-                  theme={{
-                    colors: {
-                      primary: '#D3C53A',
-                    },
-                  }}
-                  mode="outlined"
-                  placeholder="Correo"
+                   style={[
+                    formStyles.input,
+                    formStyles.btnText,
+                   
+                  ]}
+                  
+                  placeholder="Email"
                   value={(currentUser && currentUser.email) || ''}
                 />
               </View>
               <View style={{marginVertical: 10}}>
                 <Text>Contraseña</Text>
                 <TextInput
-                  theme={{
-                    colors: {
-                      primary: '#D3C53A',
-                    },
-                  }}
-                  mode="outlined"
-                  placeholder="Contraseña"
+                   style={[
+                    formStyles.input,
+                    formStyles.btnText,
+                   
+                  ]}
+                  placeholder="******"
                   secureTextEntry
                   value={dataUser?.password || ''}
                 />
@@ -107,8 +111,8 @@ const Profile = () => {
                 style={{marginBottom: 15}}
                 onPress={goToChangePassword}>
                 <Text
-                  style={{textDecorationLine: 'underline', color: '#D3C53A'}}>
-                  ¿Desea cambiar la contraseña?
+                  style={[formStyles.btnTextLabel,styles.textoPassword ]}>
+                  ¿Desea cambiar contraseña?
                 </Text>
               </TouchableOpacity>
             </View>
@@ -118,5 +122,21 @@ const Profile = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+
+  titulo: {
+    fontFamily: Platform.OS === 'ios' ? 'HelveticaNeueLTStd-Bd' : 'HelveticaNeueLTStd BOLD',
+    fontSize: width / 18,
+    marginVertical: 5,
+    marginLeft: width / 80,
+    paddingBottom: 20,
+    marginTop: 15,
+  },
+  textoPassword:{
+    fontSize: 17
+  }
+
+  })
 
 export default Profile;

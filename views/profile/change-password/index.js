@@ -10,6 +10,7 @@ import Layout from '../../layout';
 import {useNavigation} from '@react-navigation/native';
 import {Button, TextInput} from 'react-native-paper';
 import {firebase} from '@react-native-firebase/auth';
+import {formStyles, LayoutStyles} from '../../../components/category/styles';
 
 const ChangePassword = () => {
   const navigation = useNavigation();
@@ -100,12 +101,13 @@ const ChangePassword = () => {
               <View style={{marginVertical: 10}}>
                 <Text>contraseña</Text>
                 <TextInput
-                  theme={{
-                    colors: {
-                      primary: '#7C062C',
-                    },
-                  }}
-                  mode="outlined"
+                  style={[
+                    formStyles.input,
+                    formStyles.btnText,
+                   
+                  ]}
+                  
+                 
                   placeholder="Contraseña"
                   value={updatePasswordState.password}
                   onChangeText={handlePasswordChange}
@@ -115,12 +117,11 @@ const ChangePassword = () => {
               <View style={{marginVertical: 10}}>
                 <Text>Nueva contraseña</Text>
                 <TextInput
-                  theme={{
-                    colors: {
-                      primary: '#7C062C',
-                    },
-                  }}
-                  mode="outlined"
+                  style={[
+                    formStyles.input,
+                    formStyles.btnText,
+                   
+                  ]}
                   placeholder="Contraseña"
                   value={updatePasswordState.newPassword}
                   onChangeText={handleNewPasswordChange}
@@ -130,12 +131,11 @@ const ChangePassword = () => {
               <View style={{marginVertical: 10}}>
                 <Text>Repetir contraseña</Text>
                 <TextInput
-                  theme={{
-                    colors: {
-                      primary: '#7C062C',
-                    },
-                  }}
-                  mode="outlined"
+                   style={[
+                    formStyles.input,
+                    formStyles.btnText,
+                   
+                  ]}
                   placeholder="Repetid contraseña"
                   value={updatePasswordState.repeatNewPassword}
                   onChangeText={handleRepeatPasswordChange}
@@ -149,7 +149,7 @@ const ChangePassword = () => {
                   onPress={handleChange}
                   theme={{
                     colors: {
-                      primary: '#7C062C',
+                      primary: '#967B4A',
                     },
                   }}>
                   Cambiar contraseña
