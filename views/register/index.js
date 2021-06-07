@@ -36,10 +36,14 @@ const Register = ({navigation}) => {
         .collection('users')
         .doc(authStatus.user.uid)
         .set({email, uid: authStatus.user.uid, create: new Date()});
+       
+        navigation.navigate('Profile');
         Alert.alert(
           'Registro exitoso!!',
           '!Bienvenido!',
         );
+
+        
     } catch (e) {
       console.log(e);
       Alert.alert(

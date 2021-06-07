@@ -56,6 +56,7 @@ const Login = ({navigation}) => {
     console.log('handle login =>');
     await login(email, password);
     setLoading(false);
+    Alert.alert('Bienvenido has iniciado sesión correctamente');
   };
 
   return (
